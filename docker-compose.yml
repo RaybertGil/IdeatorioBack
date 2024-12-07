@@ -1,0 +1,14 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: ${DATABASE_URL} # Mapa directamente desde el archivo .env
+    env_file:
+      - ./backend/openai.env
